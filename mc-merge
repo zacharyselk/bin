@@ -1,0 +1,17 @@
+#!/bin/bash
+
+git show :1:$1 > $1.common
+git show :2:$1 > $1.ours
+git show :3:$1 > $1.theirs
+
+if [[ "$2" == "--left" ]]
+then
+    git merge-file --ours -p $1.ours $1.common $1.theirs > $1
+    echo "Merged"
+elif [[ "$2" == "--right" ]]
+then
+    git merge-file --theirs -p $1.ours $1.common $1.theirs > $1
+    echo "Merged"
+fi
+
+rm -f $1.common $1.ours $1.theirs

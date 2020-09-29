@@ -1,0 +1,5 @@
+#!/bin/bash
+
+git show :1:$1 > $1.common
+git show :2:$1 > $1.ours
+git show :2:$1 > $1.theirs

@@ -1,0 +1,3 @@
+#!/bin/bash
+
+rm -f $1.common $1.ours $1.theirs

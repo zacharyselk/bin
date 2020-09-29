@@ -1,0 +1,9 @@
+#!/bin/bash
+
+git show :1:$1 > $1.common
+git show :2:$1 > $1.ours
+git show :3:$1 > $1.theirs
+
+diff -W $(( $(tput cols) - 2 )) -y $1.ours $1.theirs | less
+
+rm -f $1.common $1.ours $1.theirs
